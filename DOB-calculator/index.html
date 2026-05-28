@@ -1,17 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Simple Login</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Age Calculator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-  <body>
- <div class="age">
-     <h2 class="AC">Age calculator</h2>
-     <input type="text" id="dob" placeholder="YYYY-MM-DD">
-  <button onClick="calculateAge()">Calculate</button>
+
+<body>
+
+  <div class="age">
+    <h2 class="AC">Age Calculator</h2>
+
+    <input type="date" id="dob">
+
+    <button onclick="calculateAge()">
+      Calculate Age
+    </button>
+
     <p id="result"></p>
-   </div>
-   
-    </body>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>

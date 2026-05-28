@@ -4,49 +4,63 @@ const result = document.getElementById("result");
 let timer;
 
 function calculateAge() {
-  const value = dobInput.value.trim();
+  const value = dobInput.value;
 
   if (!value) {
-    result.innerText = "Enter DOB like 2000-05-10";
+    result.innerHTML = "Please select your birth date";
     return;
   }
 
-  // Safe local date
-  const [y, m, d] = value.split("-");
-  const birthDate = new Date(y, m - 1, d);
+  const birthDate = new Date(value);
 
-  if (isNaN(birthDate.getTime())) {
-    result.innerText = "Wrong format! Use YYYY-MM-DD";
+  if (birthDate > new Date()) {
+    result.innerHTML = "Birth date cannot be in the future";
     return;
   }
 
   clearInterval(timer);
 
-  function update() {
+  function updateAge() {
     const now = new Date();
-    let diff = now - birthDate;
 
-    let sec = Math.floor(diff / 1000);
-    let min = Math.floor(sec / 60);
-    let hr = Math.floor(min / 60);
-    let day = Math.floor(hr / 24);
+    let years = now.getFullYear() - birthDate.getFullYear();
+    let months = now.getMonth() - birthDate.getMonth();
+    let days = now.getDate() - birthDate.getDate();
 
-    let year = Math.floor(day / 365.25);
-    day %= 365.25;
+    if (days < 0) {
+      months--;
+      const prevMonth = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        0
+      ).getDate();
 
-    let month = Math.floor(day / 30.44);
-    day = Math.floor(day % 30.44);
+      days += prevMonth;
+    }
 
-    hr %= 24;
-    min %= 60;
-    sec %= 60;
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
 
-    result.innerHTML =
-      `Your age is:<br>
-      ${year} Years, ${month} Months, ${day} Days<br>
-      ${hr} Hours, ${min} Minutes, ${sec} Seconds`;
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+
+    result.innerHTML = `
+      <span>Your Age</span><br><br>
+
+      ${years} Years<br>
+      ${months} Months<br>
+      ${days} Days<br><br>
+
+      ${hours}h :
+      ${minutes}m :
+      ${seconds}s
+    `;
   }
 
-  update();
-  timer = setInterval(update, 1000);
+  updateAge();
+
+  timer = setInterval(updateAge, 1000);
 }
