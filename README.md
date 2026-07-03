@@ -12,4 +12,4 @@
 
 * **Project:** [Portfolio](https://storied-taiyaki-22a286.netlify.app)
 
-* **Project:** [Portfolio](https://gilded-starship-e919df.netlify.app)
+* **Project:** [Expense-tracker](https://gilded-starship-e919df.netlify.app)
