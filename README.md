@@ -12,4 +12,4 @@
 
 * **Project:** [Portfolio](https://storied-taiyaki-22a286.netlify.app)
 
-* **Project:** [Expense-tracker](https://frabjous-gnome-c3537f.netlify.app)
+* **Project:** [Expense-tracker](https://gilded-sunburst-68fbf9.netlify.app)
