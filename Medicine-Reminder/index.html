@@ -1,46 +1,52 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-  <meta charset="UTF-8">
-
-  <title>Medicine Reminder</title>
-
-  <link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Reminder</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="alert('thanks for watching my project please give advice in comments')">
+<body>
 
-  <h2>Medicine Reminder</h2>
+    <div class="container">
 
-  <div class="form">
+        <h2>💊 Medicine Reminder</h2>
 
-    <input type="text" id="madicineName" placeholder="Enter the medicine Name">
+        <div class="form">
 
-    <input type="time" id="madicineTime">
+            <input
+                type="text"
+                id="medicineName"
+                placeholder="Enter medicine name">
 
-    <button onclick="addReminder()">Add Reminder</button>
+            <input
+                type="time"
+                id="medicineTime">
 
-  </div>
+            <button onclick="addReminder()">Add Reminder</button>
 
-  <h3>My Reminder:</h3>
+        </div>
 
-  <ul id="reminderList"></ul>
+        <h3>My Reminders</h3>
 
-  <button onclick="Reset()" id="resetbtn">Reset</button>
+        <ul id="reminderList"></ul>
 
-  <button onclick="stopSound()">Stop Sound</button>
+        <div class="buttons">
+            <button id="resetBtn" onclick="resetAll()">Reset</button>
+            <button id="stopBtn" onclick="stopSound()">Stop Sound</button>
+        </div>
 
-  <!-- Ringtone -->
+    </div>
 
-  <audio id="ringtone" src="ringtone.mp3" preload="auto"></audio>
+    <audio
+        id="ringtone"
+        src="ringtone.mp3"
+        preload="auto">
+    </audio>
 
-  <!-- JavaScript File -->
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 

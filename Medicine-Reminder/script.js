@@ -1,77 +1,137 @@
-const mdm = document.getElementById("madicineName");
-const mdt = document.getElementById("madicineTime");
-const list = document.getElementById("reminderList");
+const medicineName = document.getElementById("medicineName");
+const medicineTime = document.getElementById("medicineTime");
+const reminderList = document.getElementById("reminderList");
 const audio = document.getElementById("ringtone");
 
-let reminders = [];
+let reminders = JSON.parse(localStorage.getItem("reminders")) || [];
+let intervals = [];
 
 document.addEventListener(
   "click",
   () => {
-    audio
-      .play()
-      .then(() => {
-        audio.pause();
-        audio.currentTime = 0;
-      })
-      .catch(() => {});
+    audio.play().then(() => {
+      audio.pause();
+      audio.currentTime = 0;
+    }).catch(() => {});
   },
   { once: true }
 );
 
+renderReminders();
+
 function addReminder() {
-  const name = mdm.value.trim();
-  const time = mdt.value;
+
+  const name = medicineName.value.trim();
+  const time = medicineTime.value;
 
   if (!name || !time) {
     alert("Please enter medicine name and time.");
     return;
   }
 
-  const li = document.createElement("li");
-  li.textContent = `${name} - ${time}`;
-  list.appendChild(li);
+  reminders.push({
+    name,
+    time
+  });
 
-  checkReminder(time, name);
+  saveData();
 
-  mdm.value = "";
-  mdt.value = "";
+  medicineName.value = "";
+  medicineTime.value = "";
+
+  renderReminders();
 }
 
-function checkReminder(time, name) {
-  const interval = setInterval(() => {
-    const now = new Date();
+function renderReminders() {
 
-    const currentTime =
-      now.getHours().toString().padStart(2, "0") +
-      ":" +
-      now.getMinutes().toString().padStart(2, "0");
+  reminderList.innerHTML = "";
 
-    if (currentTime === time) {
-      audio.loop = true;
-      audio.play().catch(() => {});
-      alert(`💊 Time to take your medicine: ${name}`);
-      clearInterval(interval);
-      reminders = reminders.filter((id) => id !== interval);
-    }
-  }, 1000);
+  intervals.forEach(id => clearInterval(id));
+  intervals = [];
 
-  reminders.push(interval);
+  reminders.forEach((item,index)=>{
+
+    const li=document.createElement("li");
+
+    li.innerHTML=`
+      <span>💊 ${item.name} (${item.time})</span>
+      <button class="delete" onclick="deleteReminder(${index})">
+      Delete
+      </button>
+    `;
+
+    reminderList.appendChild(li);
+
+    startReminder(item);
+  });
+
 }
 
-function Reset() {
-  list.innerHTML = "";
-  mdm.value = "";
-  mdt.value = "";
+function startReminder(reminder){
 
-  reminders.forEach((id) => clearInterval(id));
-  reminders = [];
+    const id=setInterval(()=>{
 
-  stopSound();
+        const now=new Date();
+
+        const current=
+        String(now.getHours()).padStart(2,"0")+
+        ":"+
+        String(now.getMinutes()).padStart(2,"0");
+
+        if(current===reminder.time){
+
+            audio.loop=true;
+
+            audio.play().catch(()=>{});
+
+            alert(`💊 Time to take ${reminder.name}`);
+
+            clearInterval(id);
+
+        }
+
+    },1000);
+
+    intervals.push(id);
 }
 
-function stopSound() {
-  audio.pause();
-  audio.currentTime = 0;
-  audio.loop = false;
+function deleteReminder(index){
+
+    reminders.splice(index,1);
+
+    saveData();
+
+    renderReminders();
+
+}
+
+function resetAll(){
+
+    reminders=[];
+
+    saveData();
+
+    renderReminders();
+
+    stopSound();
+
+}
+
+function stopSound(){
+
+    audio.pause();
+
+    audio.currentTime=0;
+
+    audio.loop=false;
+
+}
+
+function saveData(){
+
+    localStorage.setItem(
+        "reminders",
+        JSON.stringify(reminders)
+    );
+
 }
