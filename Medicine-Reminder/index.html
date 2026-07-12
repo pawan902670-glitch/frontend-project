@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Medicine Reminder</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="alert('thanks for watching my project please give advice in comments')">
+
+  <h2>Medicine Reminder</h2>
+
+  <div class="form">
+
+    <input type="text" id="madicineName" placeholder="Enter the medicine Name">
+
+    <input type="time" id="madicineTime">
+
+    <button onclick="addReminder()">Add Reminder</button>
+
+  </div>
+
+  <h3>My Reminder:</h3>
+
+  <ul id="reminderList"></ul>
+
+  <button onclick="Reset()" id="resetbtn">Reset</button>
+
+  <button onclick="stopSound()">Stop Sound</button>
+
+  <!-- Ringtone -->
+
+  <audio id="ringtone" src="ringtone.mp3" preload="auto"></audio>
+
+  <!-- JavaScript File -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
