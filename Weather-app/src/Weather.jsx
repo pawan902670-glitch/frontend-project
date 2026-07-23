@@ -20,7 +20,6 @@ export default function Weather() {
       setError('')
       setWeather(null)
 
-      // Step 1: Get city location
       const locationResponse = await fetch(
         `https://api.openweathermap.org/geo/1.0/direct?q=${city.trim()}&limit=1&appid=${API_KEY}`
       )
@@ -39,10 +38,8 @@ export default function Weather() {
         return
       }
 
-      // Get city information
       const location = locationData[0]
 
-      // Step 2: Get weather data
       const weatherResponse = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=metric`
       )
@@ -56,7 +53,7 @@ export default function Weather() {
         return
       }
 
-      // Step 3: Save weather data
+      
       setWeather({
         city: location.name,
         country: location.country,

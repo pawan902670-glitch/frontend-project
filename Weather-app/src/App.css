@@ -11,7 +11,7 @@ body {
   min-height: 100vh;
 }
 
-/* Main Container */
+
 .container {
   width: 90%;
   max-width: 550px;
@@ -22,31 +22,28 @@ body {
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 
-  /* Smooth animation */
+ 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Container Hover */
+
 .container:hover {
   transform: scale(1.02);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Heading */
 h1 {
   margin-bottom: 25px;
   color: #333;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Heading Hover */
 h1:hover {
   color: #007bff;
   transform: scale(1.05);
   cursor: pointer;
 }
 
-/* Input */
 input {
   width: 65%;
   padding: 13px;
@@ -55,19 +52,18 @@ input {
   border-radius: 7px;
   outline: none;
 
-  /* Smooth transition */
+
   transition: border-color 0.3s ease, box-shadow 0.3s ease,
     transform 0.2s ease;
 }
 
-/* Input Focus */
+
 input:focus {
   border-color: #007bff;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
   transform: scale(1.02);
 }
 
-/* Button */
 button {
   margin-left: 8px;
   padding: 13px 18px;
@@ -78,24 +74,20 @@ button {
   border-radius: 7px;
   cursor: pointer;
 
-  /* Smooth transition */
   transition: background-color 0.3s ease, transform 0.2s ease,
     box-shadow 0.3s ease;
 }
 
-/* Button Hover */
 button:hover {
   background-color: #0056b3;
   transform: scale(1.05);
   box-shadow: 0 5px 12px rgba(0, 86, 179, 0.3);
 }
 
-/* Button Click */
 button:active {
   transform: scale(0.95);
 }
 
-/* Disabled Button */
 button:disabled {
   background-color: #999;
   cursor: not-allowed;
@@ -103,18 +95,15 @@ button:disabled {
   box-shadow: none;
 }
 
-/* Error Message */
 .error {
   margin-top: 20px;
   color: #e63946;
   font-size: 16px;
   font-weight: bold;
 
-  /* Smooth animation */
   animation: fadeIn 0.4s ease;
 }
 
-/* Weather Card */
 .weather {
   margin-top: 30px;
   padding: 25px;
@@ -122,17 +111,16 @@ button:disabled {
   border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 
-  /* Smooth transition */
+  
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Weather Card Hover */
+
 .weather:hover {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Weather City */
 .weather h2 {
   margin-top: 0;
   color: #333;
@@ -144,7 +132,6 @@ button:disabled {
   cursor: pointer;
 }
 
-/* Temperature */
 .weather h3 {
   font-size: 40px;
   margin: 15px 0;
@@ -153,13 +140,11 @@ button:disabled {
   transition: transform 0.3s ease;
 }
 
-/* Temperature Hover */
 .weather h3:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
 
-/* Weather Information */
 .weather p {
   margin: 12px 0;
   font-size: 16px;
@@ -168,14 +153,12 @@ button:disabled {
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-/* Weather Information Hover */
 .weather p:hover {
   color: #007bff;
   transform: translateX(5px);
   cursor: pointer;
 }
 
-/* Fade In Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -188,7 +171,6 @@ button:disabled {
   }
 }
 
-/* Mobile Responsive */
 @media (max-width: 600px) {
   .container {
     width: 95%;
