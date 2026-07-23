@@ -1,0 +1,305 @@
+
+.container {
+  width: min(90%, 500px);
+  margin: 60px auto;
+  padding: 35px 30px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 25px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+
+  animation: cardAppear 0.8s ease forwards;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.container:hover {
+  transform: translateY(-8px) scale(1.01);
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.container h1 {
+  margin-bottom: 30px;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+  animation: titleAnimation 1s ease;
+}
+
+.container input {
+  width: 65%;
+  padding: 14px 18px;
+
+  border: none;
+  outline: none;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.9);
+  color: #222;
+
+  font-size: 16px;
+
+  transition:
+    width 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.container input::placeholder {
+  color: #777;
+}
+
+.container input:focus {
+  width: 70%;
+  transform: scale(1.02);
+
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.container button {
+  margin-left: 10px;
+  padding: 14px 20px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.container button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.container button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.container button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.container > p {
+  margin-top: 20px;
+  padding: 12px 15px;
+
+  color: #991b1b;
+  background: rgba(254, 202, 202, 0.9);
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  animation: errorAnimation 0.4s ease;
+}
+
+.weather {
+  margin-top: 35px;
+  padding: 25px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.2);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  animation: weatherAppear 0.7s ease forwards;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.weather:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+
+.weather h2 {
+  margin-bottom: 15px;
+
+  color: white;
+
+  font-size: 27px;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+.weather h3 {
+  margin: 15px 0;
+
+  color: white;
+
+  font-size: 55px;
+  font-weight: 700;
+
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  animation: temperatureAnimation 1s ease;
+}
+
+.weather p {
+  margin: 10px 0;
+  padding: 10px;
+
+  color: white;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border-radius: 10px;
+
+  font-size: 16px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.weather p:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes titleAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes weatherAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes temperatureAnimation {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes errorAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+    margin: 30px auto;
+    padding: 25px 20px;
+  }
+
+  .container input {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .container input:focus {
+    width: 100%;
+  }
+
+  .container button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .weather h3 {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  .container h1 {
+    font-size: 28px;
+  }
+
+  .weather {
+    padding: 18px;
+  }
+
+  .weather h2 {
+    font-size: 22px;
+  }
+
+  .weather h3 {
+    font-size: 40px;
+  }
+}
