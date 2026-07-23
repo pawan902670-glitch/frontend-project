@@ -1,4 +1,4 @@
-
+/* index.css */
 
 * {
   margin: 0;
@@ -6,62 +6,8 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  min-width: 320px;
+  font-family: Arial, sans-serif;
+  background-color: #f2f6fc;
   min-height: 100vh;
-
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-
-  background:
-    linear-gradient(
-      135deg,
-      #0f172a,
-      #1e3a8a,
-      #0369a1,
-      #0891b2
-    );
-
-  background-size: 400% 400%;
-
-  animation: backgroundAnimation 15s ease infinite;
-
-  color: white;
-}
-
-button,
-input {
-  font-family: inherit;
-}
-
-button {
-  user-select: none;
-}
-
-::selection {
-  background: rgba(255, 255, 255, 0.3);
-  color: white;
-}
-
-@keyframes backgroundAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
 }

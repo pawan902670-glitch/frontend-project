@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
-import './App.css';
+import './App.css'
 
 export default function Weather() {
   const [city, setCity] = useState('')
@@ -21,67 +20,57 @@ export default function Weather() {
       setError('')
       setWeather(null)
 
-      const locationResponse = await axios.get(
-        'https://api.openweathermap.org/geo/1.0/direct',
-        {
-          params: {
-            q: city.trim(),
-            limit: 1,
-            appid: API_KEY,
-          },
-        }
+      // Step 1: Get city location
+      const locationResponse = await fetch(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city.trim()}&limit=1&appid=${API_KEY}`
       )
 
-      if (locationResponse.data.length === 0) {
+      const locationData = await locationResponse.json()
+
+      console.log('Location Data:', locationData)
+
+      if (!locationResponse.ok) {
+        setError(locationData.message || 'Location API error')
+        return
+      }
+
+      if (locationData.length === 0) {
         setError('City not found')
         return
       }
 
-      const { lat, lon, name, country } = locationResponse.data[0]
+      // Get city information
+      const location = locationData[0]
 
-      const weatherResponse = await axios.get(
-        'https://api.openweathermap.org/data/2.5/weather',
-        {
-          params: {
-            lat: lat,
-            lon: lon,
-            appid: API_KEY,
-            units: 'metric',
-          },
-        }
+      // Step 2: Get weather data
+      const weatherResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=metric`
       )
 
-      console.log('Weather Data:', weatherResponse.data)
+      const weatherData = await weatherResponse.json()
 
+      console.log('Weather Data:', weatherData)
+
+      if (!weatherResponse.ok) {
+        setError(weatherData.message || 'Weather API error')
+        return
+      }
+
+      // Step 3: Save weather data
       setWeather({
-        city: name,
-        country: country,
-        temperature: weatherResponse.data.main.temp,
-        feelsLike: weatherResponse.data.main.feels_like,
-        humidity: weatherResponse.data.main.humidity,
-        description: weatherResponse.data.weather[0].description,
-        windSpeed: weatherResponse.data.wind.speed,
+        city: location.name,
+        country: location.country,
+        temperature: weatherData.main.temp,
+        feelsLike: weatherData.main.feels_like,
+        humidity: weatherData.main.humidity,
+        description: weatherData.weather[0].description,
+        windSpeed: weatherData.wind.speed,
       })
     } catch (error) {
-      console.error('Error:', error.response?.data || error.message)
-
-      if (error.response?.status === 401) {
-        setError('Invalid API key')
-      } else {
-        setError('Weather data fetch nahi ho saka')
-      }
+      console.log('Error:', error)
+      setError('Unable to get weather data')
     } finally {
       setLoading(false)
-    }
-  }
-
-  const handleCityChange = (e) => {
-    setCity(e.target.value)
-  }
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      fetchWeather()
     }
   }
 
@@ -93,16 +82,20 @@ export default function Weather() {
         type="text"
         placeholder="Enter city name"
         value={city}
-        onChange={handleCityChange}
-        onKeyDown={handleKeyDown}
+        onChange={(e) => setCity(e.target.value)}
       />
 
-      <button onClick={fetchWeather} disabled={loading}>
+      <button
+        onClick={fetchWeather}
+        disabled={loading}
+      >
         {loading ? 'Loading...' : 'Get Weather'}
       </button>
 
       {error && (
-        <p>{error}</p>
+        <p className="error">
+          {error}
+        </p>
       )}
 
       {weather && (

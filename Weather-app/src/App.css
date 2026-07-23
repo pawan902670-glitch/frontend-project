@@ -1,217 +1,185 @@
 
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f6fc;
+  min-height: 100vh;
+}
+
+/* Main Container */
 .container {
-  width: min(90%, 500px);
-  margin: 60px auto;
-  padding: 35px 30px;
+  width: 90%;
+  max-width: 550px;
+  margin: 80px auto;
+  padding: 35px;
   text-align: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 25px;
-
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.2),
-    inset 0 1px 1px rgba(255, 255, 255, 0.2);
-
-  animation: cardAppear 0.8s ease forwards;
-
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
+  /* Smooth animation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Container Hover */
 .container:hover {
-  transform: translateY(-8px) scale(1.01);
-
-  box-shadow:
-    0 30px 70px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3);
-}
-
-.container h1 {
-  margin-bottom: 30px;
-  font-size: clamp(28px, 5vw, 40px);
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 1px;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-
-  animation: titleAnimation 1s ease;
-}
-
-.container input {
-  width: 65%;
-  padding: 14px 18px;
-
-  border: none;
-  outline: none;
-  border-radius: 12px;
-
-  background: rgba(255, 255, 255, 0.9);
-  color: #222;
-
-  font-size: 16px;
-
-  transition:
-    width 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
-}
-
-.container input::placeholder {
-  color: #777;
-}
-
-.container input:focus {
-  width: 70%;
   transform: scale(1.02);
-
-  box-shadow:
-    0 0 0 3px rgba(255, 255, 255, 0.3),
-    0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.container button {
-  margin-left: 10px;
-  padding: 14px 20px;
+/* Heading */
+h1 {
+  margin-bottom: 25px;
+  color: #333;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
 
-  border: none;
-  border-radius: 12px;
+/* Heading Hover */
+h1:hover {
+  color: #007bff;
+  transform: scale(1.05);
+  cursor: pointer;
+}
 
-  background: linear-gradient(135deg, #2563eb, #06b6d4);
+/* Input */
+input {
+  width: 65%;
+  padding: 13px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 7px;
+  outline: none;
 
+  /* Smooth transition */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+/* Input Focus */
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  transform: scale(1.02);
+}
+
+/* Button */
+button {
+  margin-left: 8px;
+  padding: 13px 18px;
+  font-size: 16px;
   color: white;
-  font-size: 15px;
-  font-weight: 600;
-
+  background-color: #007bff;
+  border: none;
+  border-radius: 7px;
   cursor: pointer;
 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-
-  transition:
-    transform 0.3s ease,
+  /* Smooth transition */
+  transition: background-color 0.3s ease, transform 0.2s ease,
     box-shadow 0.3s ease;
 }
 
-.container button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+/* Button Hover */
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(0, 86, 179, 0.3);
 }
 
-.container button:active {
-  transform: translateY(0) scale(0.97);
+/* Button Click */
+button:active {
+  transform: scale(0.95);
 }
 
-.container button:disabled {
-  opacity: 0.7;
+/* Disabled Button */
+button:disabled {
+  background-color: #999;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
-.container > p {
+/* Error Message */
+.error {
   margin-top: 20px;
-  padding: 12px 15px;
-
-  color: #991b1b;
-  background: rgba(254, 202, 202, 0.9);
-
-  border-radius: 10px;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  animation: errorAnimation 0.4s ease;
-}
-
-.weather {
-  margin-top: 35px;
-  padding: 25px;
-
-  border-radius: 20px;
-
-  background: rgba(255, 255, 255, 0.2);
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-
-  animation: weatherAppear 0.7s ease forwards;
-
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-.weather:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
-}
-
-.weather h2 {
-  margin-bottom: 15px;
-
-  color: white;
-
-  font-size: 27px;
-  font-weight: 600;
-
-  text-transform: capitalize;
-}
-
-.weather h3 {
-  margin: 15px 0;
-
-  color: white;
-
-  font-size: 55px;
-  font-weight: 700;
-
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  animation: temperatureAnimation 1s ease;
-}
-
-.weather p {
-  margin: 10px 0;
-  padding: 10px;
-
-  color: white;
-
-  background: rgba(255, 255, 255, 0.1);
-
-  border-radius: 10px;
-
+  color: #e63946;
   font-size: 16px;
+  font-weight: bold;
 
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease;
+  /* Smooth animation */
+  animation: fadeIn 0.4s ease;
 }
 
+/* Weather Card */
+.weather {
+  margin-top: 30px;
+  padding: 25px;
+  background-color: #f2f6fc;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+  /* Smooth transition */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Weather Card Hover */
+.weather:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Weather City */
+.weather h2 {
+  margin-top: 0;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.weather h2:hover {
+  color: #007bff;
+  cursor: pointer;
+}
+
+/* Temperature */
+.weather h3 {
+  font-size: 40px;
+  margin: 15px 0;
+  color: #007bff;
+
+  transition: transform 0.3s ease;
+}
+
+/* Temperature Hover */
+.weather h3:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Weather Information */
+.weather p {
+  margin: 12px 0;
+  font-size: 16px;
+  color: #555;
+
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Weather Information Hover */
 .weather p:hover {
+  color: #007bff;
   transform: translateX(5px);
-  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
-@keyframes cardAppear {
+/* Fade In Animation */
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(40px) scale(0.95);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes titleAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(10px);
   }
 
   to {
@@ -220,86 +188,26 @@
   }
 }
 
-@keyframes weatherAppear {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes temperatureAnimation {
-  from {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes errorAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Mobile Responsive */
 @media (max-width: 600px) {
   .container {
-    width: 90%;
-    margin: 30px auto;
-    padding: 25px 20px;
+    width: 95%;
+    margin: 40px auto;
+    padding: 25px 15px;
   }
 
-  .container input {
+  input {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
-  .container input:focus {
-    width: 100%;
-  }
-
-  .container button {
+  button {
     width: 100%;
     margin-left: 0;
   }
 
-  .weather h3 {
-    font-size: 45px;
-  }
-}
-
-@media (max-width: 380px) {
-  .container {
-    padding: 20px 15px;
-  }
-
-  .container h1 {
-    font-size: 28px;
-  }
-
   .weather {
-    padding: 18px;
-  }
-
-  .weather h2 {
-    font-size: 22px;
-  }
-
-  .weather h3 {
-    font-size: 40px;
+    padding: 20px;
   }
 }
+
