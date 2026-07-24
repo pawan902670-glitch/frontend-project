@@ -9,9 +9,10 @@ A collection of frontend projects built while learning **HTML, CSS, JavaScript, 
 | ✅ To-Do List         | https://creative-douhua-72b3e3.netlify.app   |
 | ⚖️ BMI Calculator    | https://lustrous-malasada-7a8678.netlify.app |
 | ❌⭕ Tic-Tac-Toe       | https://majestic-taffy-4cdd29.netlify.app    |
-| 👨‍💻 Portfolio      | https://storied-taiyaki-22a286.netlify.app   |
+| 👨‍💻 Portfolio      | https://lucent-jelly-e8ea19.netlify.app      |
 | 💰 Expense Tracker   | https://gilded-sunburst-68fbf9.netlify.app   |
 | 💊 Medicine Reminder | https://friendly-griffin-05c0b7.netlify.app  |
+| 🌤️ Weather App      | https://velvety-palmier-e5d79e.netlify.app   |
 
 ---
 
